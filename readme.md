@@ -1,51 +1,27 @@
-# 🚀 Radix Sort & Counting Sort Implementation with Performance Optimization
+# UC Summer 2026 - Sorting Algorithms
 
-This repository contains a bottom-up implementation and optimization of **Radix Sort** built upon a simple stable **Counting Sort** algorithm in Python. 
+This repository contains various sorting algorithms implemented in Python during the 2026 UC Summer semester. The goal of this project was to understand the underlying mechanics, time complexities, and structures of both comparison-based and non-comparison-based sorting techniques.
 
-Rather than just writing a working script, this project focuses on iterative code refactoring to eliminate dynamic memory allocation overhead and redundant string-reversal operations.
+## Implemented Algorithms
 
----
+* **Insertion Sorts**
+  - Implementations of Insertion sort
 
-## 📌 Key Implementation Features
+* **Merge Sort**
+  - A divide-and-conquer implementation achieving stable $O(N \log N)$ time complexity.
 
-### 1. Guaranteed Stable Sort
-* During the digit-wise Counting Sort phase, the algorithm traverses the array in **reverse order (`range(len - 1, -1, -1)`)**. This preserves the original relative order of duplicate elements, perfectly meeting the criteria for a Stable Sort.
+* **Binary Heap Sort (Max / Min Heap)**
+  - Array-based complete binary tree structures implementing both Max-Heap and Min-Heap properties for efficient priority-based sorting.
 
-### 2. Readability & Memory Optimization
-* **In-place Prefix Sum:** The cumulative sum is computed directly inside the existing count array (`corrent`), minimizing extra variable overhead.
-* **Pre-allocated Arrays:** To avoid Python's dynamic memory reallocation overhead caused by repeated `.append()`, the output array is pre-allocated (`[0] * len(lists)`) and populated via direct index mapping (Random Access).
+* **Comparison Sort by Unit Digit (1s Place)**
+  - A specialized comparison sort focusing strictly on the ones-place digit, serving as a stepping stone for digit-by-digit sorting logic.
 
-### 3. Redundant Operation Elimination (Digit Caching)
-* In standard implementations, numbers are repeatedly converted to strings and reversed (`sapart`) for every single digit place (1s, 10s, 100s...).
-* To resolve this performance bottleneck, the final optimized version parses the digits **exactly once** at the beginning and manages data as **`(original_number, digit_list)` tuples (Pairs)** throughout the entire sorting lifecycle.
+* **Radix Sort**
+  - A non-comparison-based sorting algorithm that processes numbers digit by digit, achieving $O(dN)$ time complexity.
 
----
+## How to Run / Test
+You can run the sorting scripts using Python 3:
 
-## 🛠️ Code Structure & Files
-
-### 1. `radix_sort.py` (Final Optimized Version)
-The complete Radix Sort algorithm that utilizes the `Pair` pattern to cache digit extractions and maximize time complexity efficiency.
-
-```python
-# Counting Sort per individual digit place (1s, 10s, 100s...)
-def counting_sort_by_digit(pairs, digit_index):
-    corrent = [0] * 10
-
-    # 1. Count frequencies using the pre-cached digit lists
-    for num, tlist in pairs:
-        digit = tlist[digit_index] if digit_index < len(tlist) else 0
-        corrent[digit] += 1
-
-    # 2. In-place Prefix Sum calculation
-    for i in range(1, len(corrent)):
-        corrent[i] += corrent[i - 1]
-
-    # 3. Pre-allocate array and sort backwards to maintain stability
-    sorted_pairs = [0] * len(pairs)
-    for i in range(len(pairs) - 1, -1, -1):
-        num, tlist = pairs[i]
-        digit = tlist[digit_index] if digit_index < len(tlist) else 0
-        corrent[digit] -= 1
-        sorted_pairs[corrent[digit]] = (num, tlist)
-
-    return sorted_pairs
+```bash
+# Run a specific sorting script (e.g., merge sort)
+python merge_sort.py
