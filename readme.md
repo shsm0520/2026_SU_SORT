@@ -23,7 +23,7 @@ Rather than just writing a working script, this project focuses on iterative cod
 
 ## 🛠️ Code Structure & Files
 
-### 1. `radix_sort_optimized.py` (Final Optimized Version)
+### 1. `radix_sort.py` (Final Optimized Version)
 The complete Radix Sort algorithm that utilizes the `Pair` pattern to cache digit extractions and maximize time complexity efficiency.
 
 ```python
