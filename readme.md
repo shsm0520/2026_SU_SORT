@@ -25,12 +25,19 @@ You can run the sorting scripts using Python 3:
 ```bash
 # Run a specific sorting script (e.g., merge sort)
 python merge_sort.py
+```
+
+
+```bash
+# calculate the resource check the batch number and repeat#
+python calculate.py
+```
 
 
 
-observation
+observation of experiment
 
-
+```bash
 ===========================================================================================================================================================
                                                   FINAL SORTING BENCHMARK ENSEMBLE REPORT (AVERAGED DATA)                                                  
 ===========================================================================================================================================================
