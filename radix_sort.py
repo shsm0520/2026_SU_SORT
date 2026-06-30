@@ -1,8 +1,9 @@
+from utility import read_default_list
+
 def sapart(number):
     listm = list(map(int, str(number)))
     listm.reverse()
     return listm
-
 
 # for better performance get rid of value compareson (remove spart call)
 #pairs = [(num, sapart(num)) for num in sort_list]
@@ -33,11 +34,7 @@ def counting_sort_by_digit(pairs, digit_index):
 
     return sorted_pairs
 
-
-def radix_sort(lists):
-    if not lists:
-        return []
-
+def radix_sort(lists=None):
     # make a parit and save for pairs
     pairs = [(num, sapart(num)) for num in lists]
     
@@ -50,8 +47,10 @@ def radix_sort(lists):
     # return only numbers list
     return [num for num, tlist in pairs]
 
-
-sort_list = [817, 9112, 911, 423, 376, 811, 811, 564]
-sorted_list = radix_sort(sort_list)
-
-print(sorted_list)
+if __name__ == "__main__":
+    listtbsort = read_default_list()
+    print("list to be sorted:")
+    print(listtbsort)
+    sorted_file = radix_sort(listtbsort)
+    print("sorted result:")
+    print(sorted_file)
