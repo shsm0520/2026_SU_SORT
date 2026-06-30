@@ -35,7 +35,7 @@ python calculate.py
 
 
 
-observation of experiment
+## observation of experiment
 
 
 first compairson 
@@ -235,3 +235,12 @@ Min Heap     | 39.0 (1.24K)   | 1028.0 (1.19K)   | 16858.0 (8.27K)    | 235308.0
  * Size 100000  Optimal Choice: >>> Merge Sort      <<< (Volumetric Score: 75692878.77)
  * Size 1000000 Optimal Choice: >>> Merge Sort      <<< (Volumetric Score: 114214838878.07)
 =================================================================================================================================================================================================================================================================================
+
+
+## Conclusion
+
+Sorting has a large impact on resource usage depending on the number of digits in the data and the length of the list, and it was possible to recognize that the hip-sort was fast in a hot manner in everyday use.
+
+Additional effects such as cpu cache made Reddix sorting more efficient than expected when the data were int-type and were as short as 5 digits, and the experiment used Python, so volume comparison showed that ops was larger than actual cpu usage. 
+
+Next, it seems necessary to compare using c language or Rust.
